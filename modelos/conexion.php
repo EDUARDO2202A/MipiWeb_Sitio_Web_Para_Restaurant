@@ -2,18 +2,21 @@
 // modelos/Conexion.php
 
 class Conexion {
-    private $host = "localhost";
-    private $db_name = "mipiweb";
-    private $username = "root";
-    private $password = ""; // Si en tu XAMPP le pusiste contraseña a root, escríbela aquí
+    private $host = "aws-0-us-east-2.pooler.supabase.com"; // Ej: aws-0-us-east-1.pooler.supabase.com
+    private $port = "6543";
+    private $db_name = "postgres";
+    private $username = "postgres.uktecacavnheesznaqnz";      // El usuario que te da el Pooler
+    private $password = "Contraseña12.";       // La contraseña que creaste al hacer el proyecto
     private $conn;
 
     public function conectar() {
         $this->conn = null;
 
         try {
+            $dsn = "pgsql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name;
+            
             $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8mb4",
+                $dsn,
                 $this->username,
                 $this->password,
                 [
@@ -23,8 +26,7 @@ class Conexion {
                 ]
             );
         } catch (PDOException $e) {
-            // Muestra el mensaje detallado exacto del error de MySQL
-            die("<b style='color:red;'>Error PDO: </b>" . $e->getMessage());
+            die("Error de conexión a Supabase: " . $e->getMessage());
         }
 
         return $this->conn;
