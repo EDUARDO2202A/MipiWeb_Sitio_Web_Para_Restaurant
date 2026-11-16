@@ -1,19 +1,20 @@
 <?php
-// modelos/Conexion.php
+// modelos/conexion.php
 
 class Conexion {
-    private $host = "aws-0-us-east-2.pooler.supabase.com"; // Ej: aws-0-us-east-1.pooler.supabase.com
+    private $host = "aws-0-us-east-2.pooler.supabase.com"; 
     private $port = "6543";
     private $db_name = "postgres";
-    private $username = "postgres.uktecacavnheesznaqnz";      // El usuario que te da el Pooler
-    private $password = "Contraseña12.";       // La contraseña que creaste al hacer el proyecto
+    private $username = "postgres.uktecacavnheesznaqnz";
+    private $password = "Contraseña12.";
     private $conn;
 
     public function conectar() {
         $this->conn = null;
 
         try {
-            $dsn = "pgsql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name;
+            // Agregamos sslmode=require
+            $dsn = "pgsql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name . ";sslmode=require";
             
             $this->conn = new PDO(
                 $dsn,
@@ -22,7 +23,7 @@ class Conexion {
                 [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES => false
+                    PDO::ATTR_EMULATE_PREPARES => true // <-- Cambiado a TRUE para el puerto 6543 de Supabase
                 ]
             );
         } catch (PDOException $e) {
