@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-// Configuración local en config/local.php (ignorada por Git) o variables de entorno.
+
 class Conexion {
     public function conectar(): PDO {
         $localFile = __DIR__ . '/../config/local.php';
