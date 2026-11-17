@@ -44,15 +44,7 @@ $platillos = $stmtProd->fetchAll();
           <a href="#reservar" class="btn btn-primario">Reservar Mesa</a>
           <a href="#domicilio" class="btn btn-secundario">Pedir a Domicilio</a>
         </div>
-      </div>
-
-      <!-- Columna 2: Imagen del Restaurante -->
-      <div class="portada-imagen">
-        <img src="<?= htmlspecialchars($restaurante['logo'] ?? 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop'); ?>" 
-             alt="Instalaciones del restaurante">
-      </div>
-
-    </div>
+    
   </section>
 
  

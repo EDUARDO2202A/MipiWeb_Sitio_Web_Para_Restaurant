@@ -2,8 +2,8 @@
 /* VARIABLES GLOBALES */
 
  :root {
-  --color-primario: #2563eb;
-  --color-secundario: #64748b;
+  --color-primario: #d1b9ab;
+  --color-secundario: #d1b9ab;
   --color-blanco: #ffffff;
   --color-texto: #111827;
   --color-texto-secundario: #4b5563;
@@ -15,12 +15,18 @@
 
 /* Estilos de la Portada (Hero) */
 .portada {
+  min-height: 100vh;
   padding: 60px 0;
+
+  background-image: url("https://uktecacavnheesznaqnz.supabase.co/storage/v1/object/sign/images/Gemini_Generated_Image_8ie5df8ie5df8ie5.jpg?token=eyJraWQiOiIwYTM4YmEyOC1kZjc4LTRkZTUtYWQyYS0yNWIwMmMyN2FlZWIiLCJhbGciOiJFUzI1NiJ9.eyJ1cmwiOiJpbWFnZXMvR2VtaW5pX0dlbmVyYXRlZF9JbWFnZV84aWU1ZGY4aWU1ZGY4aWU1LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3OTQ5NTUyNDcsImV4cCI6MTgyNjQ5MTI0N30.nm0hr-6HrKnZZSVSh8cVR_UYv2W8uWxThvJWi3Tstc-KeDUe9-PkgBT-H01kQdENabg1Xe2DWzLquyuRBBhncw");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
 }
 
 .portada-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
 }
@@ -67,7 +73,7 @@
 
 .btn:hover {
   transform: translateX(5px);
-  background-color: burlywood;
+  background-color: rgb(249, 124, 41);
 }
 
 .btn-primario {
@@ -80,14 +86,6 @@
   color: var(--color-blanco);
 }
 
-/* Estilo de la imagen */
-.portada-imagen img {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  border-radius: var(--radio-imagen);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
 
 
 
@@ -96,4 +94,64 @@
   .portada-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== LOGIN POS ===== */
+
+.login-page {
+    font-family: sans-serif;
+     grid-template-columns: 1fr 1fr;
+    background:#FFF7ED;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.login-page .card {
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.login-page label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.login-page input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    box-sizing: border-box;
+}
+
+.login-page button {
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 1.5rem;
+    background: #D97706;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.login-page .error {
+    color: #b91c1c;
+    background: #fee2e2;
+    padding: 0.6rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.portada-imagen img {
+  min-height: 100vh;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }

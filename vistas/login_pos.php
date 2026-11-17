@@ -18,23 +18,18 @@ $msgError = $errores[$_GET['error'] ?? ''] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MipiWeb POS - Iniciar sesión</title>
-    <style>
-        body { font-family: sans-serif; background: #f4f4f4; display: grid; place-items: center; min-height: 100vh; margin: 0; }
-        .card { background: #fff; padding: 2rem; border-radius: 8px; width: 100%; max-width: 340px; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
-        label { display: block; margin-top: 1rem; font-weight: bold; font-size: .9rem; }
-        input { width: 100%; padding: .6rem; margin-top: .3rem; box-sizing: border-box; }
-        button { width: 100%; padding: .7rem; margin-top: 1.5rem; background: #a8321b; color: #fff; border: 0; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        .error { color: #b91c1c; background: #fee2e2; padding: .6rem; border-radius: 4px; font-size: .85rem; margin-top: 1rem; }
-    </style>
+
+    <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
-<body>
+
+    <body class="login-page">
     <form class="card" action="../controladores/LoginController.php" method="POST">
-        <h2>Punto de Venta</h2>
+        <h2>Iniciar Sesión</h2>
         <?php if ($msgError): ?>
             <div class="error"><?= htmlspecialchars($msgError) ?></div>
         <?php endif; ?>
 
-        <label for="usuario">Usuario</label>
+        <label for="usuario">Usuario de trabajo</label>
         <input type="text" id="usuario" name="usuario" required>
 
         <label for="contrasena">Contraseña</label>
@@ -42,5 +37,9 @@ $msgError = $errores[$_GET['error'] ?? ''] ?? '';
 
         <button type="submit">Entrar</button>
     </form>
+    <div class="portada-imagen">
+        <img src="<?= htmlspecialchars($restaurante['logo'] ?? 'https://tse1.mm.bing.net/th/id/OIP.jMuVPY4GmoP4S2jJvJQJOwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'); ?>" 
+             alt="Instalaciones del restaurante">
+      </div>
 </body>
 </html>
