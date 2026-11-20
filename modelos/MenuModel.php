@@ -79,4 +79,13 @@ class MenuModel {
         $stmt = $this->pdo->prepare("UPDATE productos SET disponible = NOT disponible WHERE id_producto = :id");
         return $stmt->execute([':id' => $id]);
     }
+    public function listarProductosDisponibles(): array {
+        $sql = "SELECT p.id_producto, p.nombre, p.descripcion, p.precio, p.imagen,
+                       c.id_categoria, c.nombre AS categoria
+                FROM productos p
+                INNER JOIN categorias c ON p.id_categoria = c.id_categoria
+                WHERE p.disponible = true
+                ORDER BY c.nombre ASC, p.nombre ASC";
+        return $this->pdo->query($sql)->fetchAll();
+    }
 }
