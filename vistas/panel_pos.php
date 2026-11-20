@@ -19,7 +19,7 @@ $rol = $_SESSION['rol'];
 
     <ul>
         <?php if ($rol === 'administrador'): ?>
-            <li>Gestión del menú (categorías y productos)</li>
+            <li><a href="menu_pos.php">Gestión del menú (categorías y productos)</a></li>
             <li><a href="usuarios_pos.php">Gestión de usuarios y roles</a></li>
             <li>Reportes de ventas</li>
         <?php endif; ?>
