@@ -1,0 +1,543 @@
+
+/* ===== PALETA MARPLE ===== */
+
+:root {
+    --frambuesa: #CA2651;
+    --coral: #F87676;
+    --durazno: #F8B773;
+    --crema: #F8E8B3;
+    --fondo: #FFF9F2;
+    --texto: #292524;
+    --texto-suave: #78716C;
+    --blanco: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.inicio-page {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: "DM Sans", sans-serif;
+}
+
+.inicio-page h1,
+.inicio-page h2,
+.inicio-page h3 {
+    font-family: "Outfit", sans-serif;
+}
+
+.inicio-page a {
+    text-decoration: none;
+}
+
+.contenedor {
+    width: min(1150px, 90%);
+    margin: auto;
+}
+
+/* ===== PORTADA ===== */
+
+.pagina-principal {
+    position: relative;
+}
+
+.hero {
+    height: 100vh;
+    height: 100svh;
+    position: sticky;
+    top: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background: var(--fondo);
+    overflow: hidden;
+}
+
+.hero-contenido {
+    width: min(850px, 90%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+.etiqueta {
+    color: var(--frambuesa);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-size: clamp(4rem, 9vw, 8rem);
+    line-height: 1;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -3px;
+}
+
+.hero-descripcion {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--texto-suave);
+    max-width: 630px;
+    margin: 0;
+}
+
+/* ===== BOTONES ===== */
+
+.hero-botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 15px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: transform .25s, background .25s;
+}
+
+.boton:hover {
+    transform: translateY(-4px);
+}
+
+.boton-principal {
+    background: var(--frambuesa);
+    color: var(--blanco);
+}
+
+.boton-secundario {
+    color: var(--frambuesa);
+    border: 2px solid var(--frambuesa);
+}
+
+.indicador-scroll {
+    color: var(--texto-suave);
+    font-size: .85rem;
+    margin-top: 35px;
+}
+
+/* ===== SECCIÓN SUPERPUESTA ===== */
+
+.seccion-menu {
+    position: relative;
+    z-index: 2;
+    background: var(--crema);
+    border-radius: 40px 40px 0 0;
+    padding: 100px 0 110px;
+    min-height: 100vh;
+    margin-top: -65px;
+    box-shadow: 0 -12px 35px rgba(41, 37, 36, .06);
+}
+
+.encabezado-seccion {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.etiqueta-seccion {
+    color: var(--frambuesa);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.encabezado-seccion h2,
+.seccion-nosotros h2 {
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin: 15px 0;
+}
+
+.encabezado-seccion p {
+    color: var(--texto-suave);
+}
+
+/* ===== PRODUCTOS ===== */
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.producto-card {
+    background: var(--blanco);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+    transition: transform .3s, box-shadow .3s;
+}
+
+.producto-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, .10);
+}
+
+.producto-decoracion {
+    min-height: 145px;
+    background: var(--coral);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.producto-card:nth-child(3n+2) .producto-decoracion {
+    background: var(--durazno);
+}
+
+.producto-card:nth-child(3n+3) .producto-decoracion {
+    background: var(--frambuesa);
+}
+
+.producto-decoracion span {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+}
+
+.producto-info {
+    padding: 25px;
+}
+
+.producto-info h3 {
+    font-size: 1.4rem;
+    margin: 0 0 10px;
+}
+
+.producto-info p {
+    color: var(--texto-suave);
+    min-height: 45px;
+    line-height: 1.5;
+}
+
+.producto-info strong {
+    color: var(--frambuesa);
+    font-size: 1.3rem;
+}
+
+.mensaje-vacio {
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+/* ===== SOBRE NOSOTROS ===== */
+
+.seccion-nosotros {
+    position: relative;
+    z-index: 3;
+    background: var(--blanco);
+    border-radius: 40px 40px 0 0;
+    padding: 120px 0;
+    margin-top: -35px;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.nosotros-contenido {
+    max-width: 760px;
+    text-align: center;
+}
+
+.nosotros-contenido p {
+    color: var(--texto-suave);
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+
+.pie-pagina {
+    position: relative;
+    z-index: 4;
+    background: var(--texto);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+/* ===== ANIMACIONES JS ===== */
+
+.js-activo .revelar {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.js-activo .revelar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ===== BARRA DE NAVEGACIÓN ===== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 0;
+    transition: background .3s ease,
+                box-shadow .3s ease,
+                padding .3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 249, 242, .96);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+    padding: 12px 0;
+}
+
+.nav-contenedor {
+    width: min(1150px, 90%);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-logo {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--frambuesa);
+    letter-spacing: -1px;
+}
+
+.nav-enlaces {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-enlaces a {
+    color: var(--texto);
+    font-weight: 600;
+    font-size: .95rem;
+    transition: color .2s ease;
+}
+
+.nav-enlaces a:hover {
+    color: var(--frambuesa);
+}
+
+.nav-enlaces .nav-reservar {
+    background: var(--frambuesa);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 30px;
+}
+
+.nav-enlaces .nav-reservar:hover {
+    background: #A91E43;
+    color: white;
+}
+
+/* Botón hamburguesa */
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background: var(--frambuesa);
+    border-radius: 5px;
+}
+
+
+
+#inicio,
+#menu,
+#nosotros {
+    scroll-margin-top: 85px;
+}
+
+/* Reservaciones como sección superpuesta */
+
+.seccion-reservaciones {
+    position: relative;
+    z-index: 4;
+
+    background: var(--coral);
+    border-radius: 40px 40px 0 0;
+
+    margin-top: -45px;
+    padding: 110px 0;
+
+    min-height: 100vh;
+}
+
+/* Formulario sobre el fondo coral */
+
+.form-reservacion {
+    background: var(--blanco);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== RESERVACIONES SUPERPUESTAS ===== */
+
+.seccion-reservaciones {
+    position: relative;
+    z-index: 4;
+    background: var(--coral);
+    border-radius: 40px 40px 0 0;
+    margin-top: -45px;
+    padding: 100px 0 120px;
+    min-height: 100vh;
+    min-height: 100svh;
+    box-shadow: 0 -12px 35px rgba(41, 37, 36, .08);
+    scroll-margin-top: 65px;
+}
+
+.reservas-contenido {
+    max-width: 750px;
+}
+
+.reservas-encabezado {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.reservas-etiqueta {
+    display: inline-block;
+    background: var(--frambuesa);
+    color: white;
+    border-radius: 30px;
+    padding: 9px 20px;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.reservas-encabezado h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--texto);
+    margin: 20px 0 15px;
+}
+
+.reservas-encabezado p {
+    color: var(--texto);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* FORMULARIO */
+
+.form-reservacion {
+    background: var(--blanco);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, .12);
+}
+
+.campo-reserva {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 24px;
+}
+
+.campo-reserva label {
+    font-weight: 700;
+    color: var(--texto);
+}
+
+.campo-reserva input,
+.campo-reserva select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #E5DDD6;
+    border-radius: 12px;
+    background: #FFFCF8;
+    color: var(--texto);
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.campo-reserva input:focus,
+.campo-reserva select:focus {
+    outline: none;
+    border-color: var(--frambuesa);
+    box-shadow: 0 0 0 3px rgba(202, 38, 81, .12);
+}
+
+.reservas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* BOTÓN */
+
+.boton-reservar {
+    display: block;
+    width: 100%;
+    padding: 17px;
+    background: var(--frambuesa);
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .25s, transform .25s;
+}
+
+.boton-reservar:hover {
+    background: #A91E43;
+    transform: translateY(-3px);
+}
+
+.reservas-nota {
+    color: var(--texto-suave);
+    font-size: .85rem;
+    line-height: 1.5;
+    text-align: center;
+    margin: 20px 0 0;
+}
+
+/* CELULARES */
+
+@media (max-width: 600px) {
+    .seccion-reservaciones {
+        padding: 75px 0 90px;
+        border-radius: 25px 25px 0 0;
+    }
+
+    .form-reservacion {
+        padding: 25px 20px;
+    }
+
+    .reservas-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
