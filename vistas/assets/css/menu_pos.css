@@ -1,0 +1,131 @@
+
+/* ===== GESTIÓN DEL MENÚ POS ===== */
+
+.menu-pos {
+    font-family: sans-serif;
+    margin: 2rem;
+    background: #f8f9fa;
+}
+
+.menu-pos .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.menu-pos .box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+    margin-bottom: 1.5rem;
+}
+
+.menu-pos .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.menu-pos label {
+    display: block;
+    font-size: .85rem;
+    font-weight: bold;
+    margin-bottom: .3rem;
+}
+
+.menu-pos input,
+.menu-pos select {
+    width: 100%;
+    padding: .5rem;
+    box-sizing: border-box;
+}
+
+.menu-pos button {
+    padding: .6rem 1.2rem;
+    background: #a8321b;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.menu-pos table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.menu-pos th,
+.menu-pos td {
+    padding: .65rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.menu-pos th {
+    background: #f1f5f9;
+}
+
+.menu-pos .ok {
+    background: #dcfce7;
+    color: #166534;
+    padding: .7rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.menu-pos .error {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: .7rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.menu-pos .on {
+    color: #166534;
+    font-weight: bold;
+}
+
+.menu-pos .off {
+    color: #991b1b;
+    font-weight: bold;
+}
+
+.menu-pos a {
+    color: #a8321b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-pos .thumb {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.menu-pos .cancelar {
+    margin-left: 1rem;
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 600px) {
+    .menu-pos {
+        margin: 1rem;
+    }
+
+    .menu-pos .top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-pos .box {
+        overflow-x: auto;
+    }
+}

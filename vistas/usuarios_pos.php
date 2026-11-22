@@ -29,28 +29,15 @@ $msgError = $mensajesError[$_GET['error'] ?? ''] ?? '';
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MipiWeb POS - Gestión de Usuarios</title>
-    <style>
-        body { font-family: sans-serif; margin: 2rem; background: #f8f9fa; }
-        .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-        .box { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.08); margin-bottom: 1.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
-        label { display: block; font-size: .85rem; font-weight: bold; margin-bottom: .3rem; }
-        input, select { width: 100%; padding: .5rem; box-sizing: border-box; }
-        button { padding: .6rem 1.2rem; background: #a8321b; color: #fff; border: 0; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 1rem; }
-        table { width: 100%; border-collapse: collapse; background: #fff; }
-        th, td { padding: .7rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
-        th { background: #f1f5f9; }
-        .ok { background: #dcfce7; color: #166534; padding: .7rem; border-radius: 4px; margin-bottom: 1rem; }
-        .error { background: #fee2e2; color: #991b1b; padding: .7rem; border-radius: 4px; margin-bottom: 1rem; }
-        .badge-on { color: #166534; font-weight: bold; }
-        .badge-off { color: #991b1b; font-weight: bold; }
-        a { color: #a8321b; text-decoration: none; font-weight: bold; }
-    </style>
+    <link rel="stylesheet" href="assets/css/usuarios_pos.css">
+   
 </head>
-<body>
+
+<body class="usuarios-pos">
     <div class="top">
         <h1>Gestión de Usuarios</h1>
         <a href="panel_pos.php">← Volver al panel</a>
@@ -97,7 +84,7 @@ $msgError = $mensajesError[$_GET['error'] ?? ''] ?? '';
 
         <button type="submit"><?= $editando ? 'Guardar cambios' : 'Crear usuario' ?></button>
         <?php if ($editando): ?>
-            <a href="usuarios_pos.php" style="margin-left: 1rem;">Cancelar edición</a>
+           <a href="usuarios_pos.php" class="cancelar">Cancelar edición</a>
         <?php endif; ?>
     </form>
 

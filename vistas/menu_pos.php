@@ -31,26 +31,10 @@ $msgError = $errores[$_GET['error'] ?? ''] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MipiWeb POS - Gestión del Menú</title>
-    <style>
-        body { font-family: sans-serif; margin: 2rem; background: #f8f9fa; }
-        .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-        .box { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.08); margin-bottom: 1.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
-        label { display: block; font-size: .85rem; font-weight: bold; margin-bottom: .3rem; }
-        input, select { width: 100%; padding: .5rem; box-sizing: border-box; }
-        button { padding: .6rem 1.2rem; background: #a8321b; color: #fff; border: 0; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 1rem; }
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        th, td { padding: .65rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
-        th { background: #f1f5f9; }
-        .ok { background: #dcfce7; color: #166534; padding: .7rem; border-radius: 4px; margin-bottom: 1rem; }
-        .error { background: #fee2e2; color: #991b1b; padding: .7rem; border-radius: 4px; margin-bottom: 1rem; }
-        .on { color: #166534; font-weight: bold; }
-        .off { color: #991b1b; font-weight: bold; }
-        a { color: #a8321b; text-decoration: none; font-weight: bold; }
-        img.thumb { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; }
-    </style>
+    <link rel="stylesheet" href="assets/css/menu_pos.css">
 </head>
-<body>
+
+<body class="menu-pos">
     <div class="top">
         <h1>Gestión del Menú</h1>
         <a href="panel_pos.php">← Volver al panel</a>
@@ -80,9 +64,17 @@ $msgError = $errores[$_GET['error'] ?? ''] ?? '';
                     </select>
                 </div>
             </div>
-            <button type="submit"><?= $editCat ? 'Guardar categoría' : 'Agregar categoría' ?></button>
-            <?php if ($editCat): ?><a href="menu_pos.php" style="margin-left:1rem;">Cancelar</a><?php endif; ?>
-        </form>
+            
+             <button type="submit">
+             <?= $editCat ? 'Guardar categoría' : 'Agregar categoría' ?>
+             </button>
+
+             <?php if ($editCat): ?>
+             <a href="menu_pos.php" class="cancelar">Cancelar</a>
+            <?php endif; ?>
+
+</form>
+
 
         <table>
             <thead><tr><th>ID</th><th>Categoría</th><th>Área</th><th>Acción</th></tr></thead>
