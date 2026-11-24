@@ -9,7 +9,7 @@ class CajaModel {
         $this->pdo = $db->conectar();
     }
 
-    // --- TURNOS DE CAJA (F10) ---
+   
     public function obtenerTurnoAbierto() {
         $sql = "SELECT t.*, u.nombre || ' ' || u.apellidos AS cajero
                 FROM turnos_caja t
@@ -73,7 +73,7 @@ class CajaModel {
         return $this->pdo->query($sql)->fetchAll();
     }
 
-    // --- COBROS Y PAGOS (F11) ---
+
     public function listarPedidosPorCobrar(): array {
         $sql = "SELECT p.id_pedido, p.tipo, p.estado, p.fecha_pedido, p.total,
                        m.numero AS numero_mesa,
@@ -130,7 +130,6 @@ class CajaModel {
         }
     }
 
-    // --- DATOS PARA TICKET ---
     public function obtenerDatosTicket(int $idPedido): ?array {
         $stmtPed = $this->pdo->prepare(
             "SELECT p.*, m.numero AS numero_mesa, u.nombre AS atendio

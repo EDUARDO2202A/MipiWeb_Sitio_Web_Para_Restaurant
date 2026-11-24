@@ -7,7 +7,7 @@ require_once __DIR__ . '/../modelos/ReservacionModel.php';
 // Solo administrador y cajero
 verificarSesion(['administrador', 'cajero']);
 
-// Solo se permiten solicitudes POST
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ../vistas/reservaciones_pos.php');
     exit;

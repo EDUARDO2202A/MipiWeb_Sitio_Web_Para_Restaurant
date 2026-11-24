@@ -112,27 +112,48 @@ class PedidoModel {
         }
     }
 
-    public function listarPedidosActivos(): array {
-        $sql = "SELECT p.id_pedido, p.tipo, p.id_mesa, p.estado, p.fecha_pedido, p.notas, p.total,
-                       m.numero AS numero_mesa,
-                       u.nombre AS mesero
-                FROM pedidos p
-                LEFT JOIN mesas m ON p.id_mesa = m.id_mesa
-                LEFT JOIN usuarios u ON p.id_usuario = u.id_usuario
-                WHERE p.estado IN ('recibido', 'en_preparacion', 'listo')
-                ORDER BY p.fecha_pedido ASC";
-        return $this->pdo->query($sql)->fetchAll();
-    }
+  
+public function listarPedidosActivos(): array {
 
-    public function obtenerDetallesPedido(int $idPedido): array {
-        $sql = "SELECT d.cantidad, d.precio_unitario, d.observaciones, pr.nombre AS producto
-                FROM detalle_pedido d
-                INNER JOIN productos pr ON d.id_producto = pr.id_producto
-                WHERE d.id_pedido = :id_pedido";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id_pedido' => $idPedido]);
-        return $stmt->fetchAll();
-    }
+    $sql = "SELECT
+                p.id_pedido,
+                p.tipo,
+                p.id_mesa,
+                p.estado,
+                p.fecha_pedido,
+                p.notas,
+                p.total,
+
+                m.numero AS numero_mesa,
+                u.nombre AS mesero,
+
+                e.nombre_contacto,
+                e.telefono,
+                e.direccion,
+                e.referencias
+
+            FROM pedidos p
+
+            LEFT JOIN mesas m
+                ON p.id_mesa = m.id_mesa
+
+            LEFT JOIN usuarios u
+                ON p.id_usuario = u.id_usuario
+
+            LEFT JOIN entregas_domicilio e
+                ON p.id_pedido = e.id_pedido
+
+            WHERE p.estado IN (
+                'recibido',
+                'en_preparacion',
+                'listo'
+            )
+
+            ORDER BY p.fecha_pedido ASC";
+
+    return $this->pdo->query($sql)->fetchAll();
+}
+
 
     public function cambiarEstadoPedido(int $idPedido, string $estado): bool {
         $stmt = $this->pdo->prepare("UPDATE pedidos SET estado = :estado WHERE id_pedido = :id");
@@ -157,4 +178,30 @@ class PedidoModel {
 
         return $ok;
     }
+
+    // ==========================================
+    // OBTENER PRODUCTOS DE UN PEDIDO
+    // ==========================================
+
+    public function obtenerDetallesPedido(int $idPedido): array
+    {
+        $sql = "SELECT
+                    d.cantidad,
+                    d.precio_unitario,
+                    d.observaciones,
+                    pr.nombre AS producto
+                FROM detalle_pedido d
+                INNER JOIN productos pr
+                    ON d.id_producto = pr.id_producto
+                WHERE d.id_pedido = :id_pedido";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->execute([
+            ':id_pedido' => $idPedido
+        ]);
+
+        return $stmt->fetchAll();
+    }
+
 }

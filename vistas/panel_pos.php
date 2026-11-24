@@ -31,7 +31,7 @@ $rol = $_SESSION['rol'];
     <a href="reservaciones_pos.php">
         Gestión de reservaciones
     </a>
-</li><li>Reservaciones</li>
+</li>
         <?php endif; ?>
 
         <li><a href="pedidos.php">Pedidos y mesas</a></li>

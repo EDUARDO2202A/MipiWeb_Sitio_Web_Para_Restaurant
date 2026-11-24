@@ -1,0 +1,239 @@
+
+/* ===== PEDIDOS Y MESAS POS ===== */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background: #f8f9fa;
+    color: #333;
+}
+
+/* Encabezado */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.top-bar h1 {
+    margin: 0;
+    font-size: 1.7rem;
+}
+
+.top-bar a {
+    color: #a8321b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.top-bar a:hover {
+    text-decoration: underline;
+}
+
+/* Contenedores */
+
+.card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    margin: 0 2rem 1.5rem;
+    overflow-x: auto;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+/* Formularios */
+
+.form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 1rem;
+}
+
+.card label {
+    display: inline-block;
+    font-size: .85rem;
+    font-weight: bold;
+    margin: .5rem 1rem .5rem 0;
+}
+
+.card input,
+.card select {
+    padding: .5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.card input[type="number"] {
+    width: 90px;
+}
+
+.card button {
+    padding: .6rem 1.2rem;
+    background: #a8321b;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: .5rem;
+}
+
+.card button:hover {
+    background: #842715;
+}
+
+/* Mesas */
+
+.mesas-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    );
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mesa-item {
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.mesa-item h3 {
+    margin-top: 0;
+}
+
+.mesa-item p {
+    margin: .5rem 0;
+}
+
+.mesa-item form {
+    margin-top: 1rem;
+}
+
+/* Estados de las mesas */
+
+.mesa-libre {
+    border-left: 4px solid #16a34a;
+}
+
+.mesa-ocupada {
+    border-left: 4px solid #dc2626;
+}
+
+.mesa-reservada {
+    border-left: 4px solid #d97706;
+}
+
+/* Tablas */
+
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 1rem;
+}
+
+.card th,
+.card td {
+    padding: .7rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: top;
+}
+
+.card th {
+    background: #f1f5f9;
+}
+
+.card td ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.card td li {
+    margin-bottom: .4rem;
+}
+
+/* Datos de entrega */
+
+.datos-entrega {
+    margin-top: 1rem;
+    padding: .8rem;
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    min-width: 180px;
+    overflow-wrap: anywhere;
+}
+
+.datos-entrega h4 {
+    margin: 0 0 .7rem;
+    font-size: .9rem;
+}
+
+.datos-entrega p {
+    margin: .4rem 0;
+    font-size: .85rem;
+}
+
+/* Mensajes */
+
+.msg-ok {
+    background: #dcfce7;
+    color: #166534;
+    padding: .7rem;
+    border-radius: 4px;
+    margin: 0 2rem 1rem;
+}
+
+.msg-error {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: .7rem;
+    border-radius: 4px;
+    margin: 0 2rem 1rem;
+}
+
+/* Adaptación para celulares */
+
+@media (max-width: 600px) {
+
+    .top-bar {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card {
+        margin: 0 1rem 1rem;
+        padding: 1rem;
+    }
+
+    .form-inline {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mesas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .msg-ok,
+    .msg-error {
+        margin: 0 1rem 1rem;
+    }
+}

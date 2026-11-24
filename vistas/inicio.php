@@ -142,6 +142,11 @@ $estadoReserva = $_GET['reserva'] ?? '';
                        class="boton boton-principal">
                         Explorar menú
                     </a>
+                   
+                    <a href="pedido_domicilio.php"
+                         class="boton boton-secundario">
+                         Pedir a domicilio
+                    </a>
 
                     <a href="#nosotros"
                        class="boton boton-secundario">

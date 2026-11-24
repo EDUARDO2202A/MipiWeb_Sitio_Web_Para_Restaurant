@@ -38,7 +38,6 @@ class ReservacionModel {
         ]);
     }
 
-    // Listar todas las reservaciones
     public function listar(): array {
 
         $sql = "SELECT id_reservacion,
@@ -63,7 +62,7 @@ class ReservacionModel {
         return $this->pdo->query($sql)->fetchAll();
     }
 
-    // Confirmar o rechazar reservaciones
+   
     public function gestionar(
         int $idReservacion,
         string $accion,
@@ -78,7 +77,6 @@ class ReservacionModel {
 
         try {
 
-            // 1. Buscar y bloquear la reservación
             $stmt = $this->pdo->prepare(
                 "SELECT id_reservacion, fecha_hora,
                         num_personas, estado
@@ -96,7 +94,7 @@ class ReservacionModel {
                 );
             }
 
-            // 2. RECHAZAR
+         
             if ($accion === 'rechazar') {
 
                 $stmt = $this->pdo->prepare(
@@ -112,9 +110,9 @@ class ReservacionModel {
 
             } else {
 
-                // 3. CONFIRMAR
+             
 
-                // Validar que la reservación sea futura
+               
                 $zona = new DateTimeZone('America/Merida');
 
                 $fechaReserva = new DateTimeImmutable(
@@ -128,14 +126,14 @@ class ReservacionModel {
                     );
                 }
 
-                // Comprobar que se seleccionó una mesa
+               
                 if ($idMesa === null || $idMesa <= 0) {
                     throw new RuntimeException(
                         'Selecciona una mesa.'
                     );
                 }
 
-                // Buscar y bloquear la mesa
+         
                 $stmt = $this->pdo->prepare(
                     "SELECT id_mesa, capacidad
                      FROM mesas
@@ -152,14 +150,13 @@ class ReservacionModel {
                     );
                 }
 
-                // Verificar capacidad
+           
                 if ((int)$mesa['capacidad'] < (int)$reserva['num_personas']) {
                     throw new RuntimeException(
                         'La mesa no tiene capacidad suficiente.'
                     );
                 }
 
-                // Verificar disponibilidad (duración: 2 horas)
                 $inicio = $reserva['fecha_hora'];
 
                 $fin = $fechaReserva
