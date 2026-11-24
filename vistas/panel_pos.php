@@ -12,8 +12,9 @@ $rol = $_SESSION['rol'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MipiWeb POS - Panel</title>
+    <link rel="stylesheet" href="assets/css/panel.css">
 </head>
-<body style="font-family: sans-serif; padding: 2rem;">
+<body>
     <h1>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']) ?></h1>
     <p>Rol actual: <strong><?= htmlspecialchars(ucfirst($rol)) ?></strong></p>
 
