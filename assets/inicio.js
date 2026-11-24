@@ -1,7 +1,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ===== MENÚ HAMBURGUESA =====
+    // =====================================
+    // 1. MENÚ HAMBURGUESA
+    // =====================================
 
     const navbar = document.getElementById("navbar");
     const botonMenu = document.getElementById("nav-toggle");
@@ -9,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (navbar && botonMenu && enlacesMenu) {
 
-        // Cambiar apariencia al hacer scroll
+        // Cambiar apariencia del navbar al hacer scroll
         function actualizarNavbar() {
             navbar.classList.toggle(
                 "scrolled",
@@ -23,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         actualizarNavbar();
 
-        // Abrir o cerrar menú
+        // Abrir y cerrar menú hamburguesa
         botonMenu.addEventListener("click", () => {
 
             const abierto = enlacesMenu.classList.toggle("abierto");
@@ -37,9 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 "aria-label",
                 abierto ? "Cerrar menú" : "Abrir menú"
             );
+
         });
 
-        // Cerrar cuando se selecciona una opción
+        // Cerrar menú al seleccionar una opción
         enlacesMenu.querySelectorAll("a").forEach((enlace) => {
 
             enlace.addEventListener("click", () => {
@@ -48,18 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 botonMenu.setAttribute("aria-expanded", "false");
                 botonMenu.setAttribute("aria-label", "Abrir menú");
+
             });
 
         });
+
     }
 
-    // ===== ANIMACIONES AL HACER SCROLL =====
+
+    // =====================================
+    // 2. ANIMACIONES AL HACER SCROLL
+    // =====================================
 
     const reducirMovimiento = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (!reducirMovimiento && "IntersectionObserver" in window) {
+    if (
+        !reducirMovimiento &&
+        "IntersectionObserver" in window
+    ) {
 
         document.body.classList.add("js-activo");
 
@@ -70,8 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
             entradas.forEach((entrada) => {
 
                 if (entrada.isIntersecting) {
+
                     entrada.target.classList.add("visible");
+
                     observador.unobserve(entrada.target);
+
                 }
 
             });
@@ -83,63 +97,101 @@ document.addEventListener("DOMContentLoaded", () => {
         elementos.forEach((elemento) => {
             observador.observe(elemento);
         });
+
     }
 
 
+    // =====================================
+    // 3. FORMULARIO DE RESERVACIONES
+    // =====================================
 
-// ===== FORMULARIO DE RESERVACIONES =====
+    const formularioReserva = document.getElementById("form-reservacion");
+    const fechaReserva = document.getElementById("fecha");
+    const horaReserva = document.getElementById("hora");
 
-const fechaReserva = document.getElementById("fecha");
-const horaReserva = document.getElementById("hora");
-const formularioReserva = document.getElementById("form-reservacion");
-const botonReservar = document.querySelector(".boton-reservar");
+    if (formularioReserva && fechaReserva && horaReserva) {
 
-if (fechaReserva && horaReserva && formularioReserva && botonReservar) {
+        // Obtener fecha actual en formato YYYY-MM-DD
+        function fechaLocal() {
 
-    function fechaLocal() {
-        const hoy = new Date();
+            const hoy = new Date();
 
-        const anio = hoy.getFullYear();
-        const mes = String(hoy.getMonth() + 1).padStart(2, "0");
-        const dia = String(hoy.getDate()).padStart(2, "0");
+            const anio = hoy.getFullYear();
 
-        return `${anio}-${mes}-${dia}`;
-    }
+            const mes = String(
+                hoy.getMonth() + 1
+            ).padStart(2, "0");
 
-    // No permitir fechas anteriores a hoy
-    fechaReserva.min = fechaLocal();
+            const dia = String(
+                hoy.getDate()
+            ).padStart(2, "0");
 
-    botonReservar.addEventListener("click", () => {
-
-        // Primero verificar los campos obligatorios
-        if (!formularioReserva.reportValidity()) {
-            return;
+            return `${anio}-${mes}-${dia}`;
         }
 
-        const fechaHora = new Date(
-            `${fechaReserva.value}T${horaReserva.value}`
+
+        // No permitir seleccionar fechas anteriores
+        fechaReserva.min = fechaLocal();
+
+
+        // Limpiar mensajes de validación
+        function limpiarErrorFecha() {
+            horaReserva.setCustomValidity("");
+        }
+
+        fechaReserva.addEventListener(
+            "input",
+            limpiarErrorFecha
         );
 
-        if (fechaHora <= new Date()) {
-            horaReserva.setCustomValidity(
-                "Selecciona una fecha y hora futuras."
-            );
-            horaReserva.reportValidity();
-            return;
-        }
+        horaReserva.addEventListener(
+            "input",
+            limpiarErrorFecha
+        );
 
-        horaReserva.setCustomValidity("");
 
-        // Todavía no guardamos en Supabase
-        alert("Formulario válido. Próximamente podrás enviar tu reservación.");
-    });
+        // =====================================
+        // 4. VALIDAR ANTES DE ENVIAR A PHP
+        // =====================================
 
-    // Limpiar advertencia al cambiar fecha u hora
-    [fechaReserva, horaReserva].forEach((campo) => {
-        campo.addEventListener("input", () => {
+        formularioReserva.addEventListener("submit", (evento) => {
+
+            // Limpiar errores anteriores
             horaReserva.setCustomValidity("");
+
+            // Validar los campos obligatorios
+            if (!formularioReserva.reportValidity()) {
+                evento.preventDefault();
+                return;
+            }
+
+            // Obtener la fecha y hora seleccionadas
+            const fechaHora = new Date(
+                `${fechaReserva.value}T${horaReserva.value}`
+            );
+
+            // Comprobar que sea una fecha futura
+            if (
+                Number.isNaN(fechaHora.getTime()) ||
+                fechaHora <= new Date()
+            ) {
+
+                evento.preventDefault();
+
+                horaReserva.setCustomValidity(
+                    "Selecciona una fecha y hora futuras."
+                );
+
+                horaReserva.reportValidity();
+
+                return;
+            }
+
+            // Todo correcto: permitir envío a PHP
+            horaReserva.setCustomValidity("");
+
         });
-    });
-}
+
+    }
 
 });
