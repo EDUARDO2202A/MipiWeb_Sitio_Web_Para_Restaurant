@@ -22,15 +22,15 @@ $rol = $_SESSION['rol'];
         <?php if ($rol === 'administrador'): ?>
             <li><a href="menu_pos.php">Gestión del menú (categorías y productos)</a></li>
             <li><a href="usuarios_pos.php">Gestión de usuarios y roles</a></li>
-            <li>Reportes de ventas</li>
+            <li><a href="reportes_pos.php">Reportes de ventas</a></li>
         <?php endif; ?>
 
         <?php if ($rol === 'administrador' || $rol === 'cajero'): ?>
-            <li>Turnos de caja y cobros</li>
+            <li><a href="caja_pos.php">Turnos de caja y cobros</a></li>
             <li>Reservaciones</li>
         <?php endif; ?>
 
-        <li>Pedidos y mesas</li>
+        <li><a href="pedidos.php">Pedidos y mesas</a></li>
     </ul>
 
     <a href="../controladores/LoginController.php?accion=logout">Cerrar sesión</a>
