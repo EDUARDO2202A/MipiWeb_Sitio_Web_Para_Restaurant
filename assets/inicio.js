@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (navbar && botonMenu && enlacesMenu) {
 
-        // Cambiar apariencia del navbar al hacer scroll
+        
         function actualizarNavbar() {
             navbar.classList.toggle(
                 "scrolled",

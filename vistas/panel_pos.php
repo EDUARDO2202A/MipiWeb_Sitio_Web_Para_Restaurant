@@ -27,7 +27,11 @@ $rol = $_SESSION['rol'];
 
         <?php if ($rol === 'administrador' || $rol === 'cajero'): ?>
             <li><a href="caja_pos.php">Turnos de caja y cobros</a></li>
-            <li>Reservaciones</li>
+            <li>
+    <a href="reservaciones_pos.php">
+        Gestión de reservaciones
+    </a>
+</li><li>Reservaciones</li>
         <?php endif; ?>
 
         <li><a href="pedidos.php">Pedidos y mesas</a></li>

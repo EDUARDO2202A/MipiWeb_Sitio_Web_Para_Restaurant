@@ -72,7 +72,7 @@ $estadoReserva = $_GET['reserva'] ?? '';
              aria-label="Navegación principal">
 
             <a href="#inicio" class="nav-logo">
-                MIP IWEB
+                MIPI IWEB
             </a>
 
             <button
@@ -120,7 +120,7 @@ $estadoReserva = $_GET['reserva'] ?? '';
             <div class="hero-contenido">
 
                 <span class="etiqueta">
-                    BIENVENIDO A MIP IWEB
+                    BIENVENIDO A MIPI IWEB
                 </span>
 
                 <h1>
